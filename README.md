@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-green?style=for-the-badge&logo=python)](https://www.python.org/) [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-yellow?style=for-the-badge)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-green?style=for-the-badge&logo=python)](https://www.python.org/) [![Flower](https://img.shields.io/badge/Flower-Federated%20Learning-ff6f00?style=for-the-badge)](https://flower.ai/) [![Ganache](https://img.shields.io/badge/Ganache-Blockchain%20Simulator-8b5e3c?style=for-the-badge&logo=ethereum&logoColor=white)](https://trufflesuite.com/ganache/) [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-yellow?style=for-the-badge)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 **[Paper](https://arxiv.org/abs/2503.07869) | [BibTeX](#bibtex)**
 </div>
