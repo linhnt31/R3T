@@ -1,4 +1,4 @@
-# R3T — Blockchain-based Federated Learning Framework 
+# R3T - Blockchain-based Federated Learning Framework 
 
 <div align="center">
 
