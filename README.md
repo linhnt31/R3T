@@ -1,6 +1,12 @@
 # R3T — Blockchain-based Federated Learning Framework 
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-green?style=for-the-badge&logo=python)](https://www.python.org/)[![License: GPL v2](https://img.shields.io/badge/License-GPLv2-yellow?style=for-the-badge)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-green?style=for-the-badge&logo=python)](https://www.python.org/) [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-yellow?style=for-the-badge)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+**[Paper](https://arxiv.org/abs/2503.07869) | [BibTeX](#citation)**
+</div>
+
 ---
 A blockchain-based federated learning (FL) system built on [Flower](https://flower.ai) with a private Ethereum blockchain (Ganache) for data/model sharing and learning, contribution tracking, and reward allocation.
 
@@ -493,6 +499,8 @@ Saved weights:
 - `Client/Global-weights/<session_dir>/Round-<n>-Global-weights.npy`
 
 ## 📄 Citation
+
+Paper: [Right Reward Right Time for Federated Learning](https://arxiv.org/abs/2503.07869)
 
 If you find this work useful, please cite our paper:
 
