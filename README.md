@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-green?style=for-the-badge&logo=python)](https://www.python.org/) [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-yellow?style=for-the-badge)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-**[Paper](https://arxiv.org/abs/2503.07869) | [BibTeX](#citation)**
+**[Paper](https://arxiv.org/abs/2503.07869) | [BibTeX](#bibtex)**
 </div>
 
 ---
@@ -498,6 +498,7 @@ Saved weights:
 - `Client/Local-weights/Client-<id>/<session_dir>/Round-<n>-training-weights.npy`
 - `Client/Global-weights/<session_dir>/Round-<n>-Global-weights.npy`
 
+<a id="bibtex"></a>
 ## 📄 Citation
 
 Paper: [Right Reward Right Time for Federated Learning](https://arxiv.org/abs/2503.07869)
