@@ -503,7 +503,7 @@ Saved weights:
 
 Paper: [Right Reward Right Time for Federated Learning](https://arxiv.org/abs/2503.07869)
 
-If you find this work useful, please cite our paper:
+Some parts of this project is from our paper. If you find this work useful, please cite it:
 
 ```bibtex
 @article{nguyen2025right,
