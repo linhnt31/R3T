@@ -1,0 +1,6 @@
+{
+    "instructions": "Paste your own Pinata API credentials here. Keep this file out of version control if it contains real secrets.",
+    "api_key": "",
+    "secret_key": "",
+    "JWT": ""
+}

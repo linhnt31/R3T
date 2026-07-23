@@ -1,0 +1,19 @@
+{
+  "num_rounds": 100,
+  "is_resume": false,
+  "session": 1779140260,
+  "run_stamp": "20260518_223740",
+  "session_dir": "fmnist_10clients_clp_aware_seed42_cnn_20260518_223740",
+  "clp": 10,
+  "threshold": 0.05,
+  "alpha": 0.1,
+  "batch_size": 32,
+  "local_epochs": 2,
+  "dataset": "fmnist",
+  "log_dir": "/home/linhnt/Desktop/Blockchain_based_Federated_Learning_Framework/report/temp/fmnist_cnn_seed42_10clients_clp_aware_alpha0.1_20260518_223740",
+  "client_selection": "clp_aware",
+  "model_type": "cnn",
+  "num_clients": 10,
+  "ratio": 1.4,
+  "cfl_clients_per_round": 3
+}

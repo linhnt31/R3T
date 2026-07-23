@@ -1,0 +1,29 @@
+__pycache__
+report
+model_weights
+Local-weights
+blockfed
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+secrets/
+credentials/
+
+# Private keys, certificates with private keys, and blockchain wallets
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+keystore/
+wallet/
+wallets/
+mnemonic.txt
+
+# Generated Truffle artifacts (recreate with `truffle compile`)
+Blockchain/build/

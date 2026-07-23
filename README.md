@@ -501,16 +501,15 @@ Saved weights:
 <a id="bibtex"></a>
 ## 📄 Citation
 
-Paper: [Right Reward Right Time for Federated Learning](https://arxiv.org/abs/2503.07869)
-
 Some parts of this project is from our paper. If you find this work useful, please cite it:
 
 ```bibtex
 @article{nguyen2025right,
-  title={Right Reward Right Time for Federated Learning},
+  title={Carpe Diem: Critical Learning Period-Aware Contract-Based Incentives for Federated Learning},
   author={Nguyen, Thanh Linh and Hoang, Dinh Thai and Nguyen, Diep N and Pham, Quoc-Viet},
-  journal={arXiv preprint arXiv:2503.07869},
-  year={2025}
+  journal={IEEE Transactions on Network Science and Engineering},
+  year={2026},
+  note={early access}
 }
 ```
 
