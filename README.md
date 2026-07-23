@@ -17,6 +17,9 @@ A blockchain-based federated learning (FL) system built on [Flower](https://flow
 - [Project Structure](#project-structure)
 - [Key Features](#key-features)
 - [Installation](#installation)
+  - [Option A — pip](#install-with-pip)
+  - [Option B — conda](#install-with-conda)
+  - [Node.js tools](#nodejs-tools)
 - [Setup](#setup)
   - [1. Blockchain](#1-blockchain)
     - [Smart Contracts](#smart-contracts)
@@ -24,9 +27,17 @@ A blockchain-based federated learning (FL) system built on [Flower](https://flow
 - [Running the System](#running-the-system)
   - [Start the Server](#start-the-server)
   - [Start Clients](#start-clients)
+    - [Launch multiple clients](#launch-multiple-clients)
   - [Dataset and Model Selection](#dataset-and-model-selection)
+    - [CNN backbone](#cnn-backbone)
+    - [AlexNet backbone](#alexnet-backbone)
   - [Multi-Seed Experiments](#multi-seed-experiments)
 - [Critical Learning Period Detection](#critical-learning-period-detection)
+  - [Per-client training loss](#per-client-training-loss)
+  - [Federated Gradient Norm](#federated-gradient-norm)
+  - [Detection rule](#detection-rule)
+  - [Console output](#clp-console-output)
+  - [Saved values](#clp-saved-values)
 - [Blockchain Overhead Metrics](#blockchain-overhead-metrics)
 - [Latency and Communication Metrics](#latency-and-communication-metrics)
 - [Output Files](#output-files)
@@ -87,6 +98,7 @@ Blockchain_based_Federated_Learning_Framework/
 
 Tested on Ubuntu 22.04, Python 3.10.
 
+<a id="install-with-pip"></a>
 ### 🐍 Option A — pip (recommended)
 
 ```bash
@@ -102,6 +114,7 @@ grep -v "^nvidia-" requirements.txt > requirements_cpu.txt
 pip install -r requirements_cpu.txt
 ```
 
+<a id="install-with-conda"></a>
 ### 🧪 Option B — conda
 
 ```bash
@@ -109,6 +122,7 @@ conda env create -f blockfed_env.yml
 conda activate blockfed
 ```
 
+<a id="nodejs-tools"></a>
 ### 📦 Node.js tools (both options)
 
 - **Node.js v16** — required by Truffle
@@ -213,7 +227,7 @@ All options:
 | `--ratio` | float | `1.5` | Geometric growth ratio for per-client sample counts |
 | `--cfl_clients_per_round` | int | `3` | Number of sampled clients per round when `--cfl` is used |
 | `--is_resume` | flag | off | Resume training from the last saved session weights |
-| `--clp_aware` | flag | off | CLP rounds: 1 pinned near-high-ID client (skip top 2, pick next 1) + 2 random; post-CLP: 3 random clients |
+| `--clp_aware` | flag | off | CLP rounds: you can customize how you select clients during CLPs in Server/FLstrategy.py |
 | `--cfl` | flag | off | Conventional FL sampling without CLP phase switching (3 random clients each round) *(default when neither flag is given)* |
 
 `--clp_aware` and `--cfl` are mutually exclusive. If neither is passed, `cfl` is used.
@@ -238,6 +252,7 @@ The server blocks until `--min_available_clients` clients have connected before 
 
 ### 👥 Start Clients
 
+<a id="launch-multiple-clients"></a>
 #### Multiple clients from one terminal (recommended)
 
 ```bash
@@ -291,6 +306,7 @@ Input shape is selected automatically:
 - CIFAR-10: `32×32×3`
 - FMNIST: `28×28×1`
 
+<a id="cnn-backbone"></a>
 #### 🧠 CNN backbone (`--model_type cnn`, default)
 
 ```
@@ -304,6 +320,7 @@ Optimizer : Adam
 Loss      : sparse_categorical_crossentropy
 ```
 
+<a id="alexnet-backbone"></a>
 #### 🧠 AlexNet backbone (`--model_type alexnet`)
 
 ```
@@ -380,6 +397,7 @@ Server logs for each run are written to `report/temp/server_<dataset>_<model>_se
 ---
 
 ## 🧠 Critical Learning Period Detection
+<a id="per-client-training-loss"></a>
 ### 📉 Per-client training loss (CLP loss)
 
 After local training each round, each client computes:
@@ -390,6 +408,7 @@ clp_loss_i = lr × ‖∇L(batch)‖²
 
 This is the learning rate multiplied by the squared L2 norm of the gradient with respect to a single batch, computed via `tf.GradientTape` immediately after `model.fit()`.
 
+<a id="federated-gradient-norm"></a>
 ### 📈 Federated Gradient Norm (FGN)
 
 The server aggregates client CLP losses into a weighted average each round:
@@ -400,6 +419,7 @@ fgn(t) = Σ_i  (n_i / N)  ×  clp_loss_i
 
 where `n_i` is the number of training samples for client `i` and `N` is the total across all participating clients that round.
 
+<a id="detection-rule"></a>
 ### ✅ Detection rule
 
 A round `t` is flagged as a CLP if:
@@ -410,6 +430,7 @@ rel_change(t) = ( fgn(t) − fgn(t−1) ) / fgn(t−1)  ≥  threshold
 
 `rel_change` is undefined at round 1 (no previous FGN), so round 1 is never flagged as a CLP.
 
+<a id="clp-console-output"></a>
 ### 🧾 Console output per round
 
 Every round the server prints a line showing all CLP values:
@@ -419,6 +440,7 @@ Every round the server prints a line showing all CLP values:
 [CLP] round=3  fgn=0.003890  prev_fgn=0.004105  rel_change=-0.052375  threshold=0.05  is_CLP=False
 ```
 
+<a id="clp-saved-values"></a>
 ### 💾 Saved values
 
 `report/temp/cfl_acc_loss_<dataset>_seed<seed>.json` contains per-round keys plus final full-test metrics:
